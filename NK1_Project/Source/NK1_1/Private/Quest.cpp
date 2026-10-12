@@ -65,6 +65,12 @@ void AQuest::UpdateStartStatus()
 
 	SetQuestStatus(EQuestStatus::Started);
 
+  for (UQuestCondition *cond : StartConditions)
+  {
+    cond->StopCondition();
+    cond->OnQuestConditionCompleted.RemoveAll(this);
+  }
+
 	for (const TSubclassOf<UQuestCondition> &ConditionTemplate : QuestSettings->EndConditions)
 	{
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
@@ -102,5 +108,5 @@ void AQuest::SetQuestStatus(const EQuestStatus NewQuestStatus)
 	if (QuestStatus == NewQuestStatus)
 		return;
 	QuestStatus = NewQuestStatus;
-	OnSomeQuestStatusChanged.Broadcast(this, NewQuestStatus);
+	OnQuestStatusChanged.Broadcast(this, NewQuestStatus);
 }

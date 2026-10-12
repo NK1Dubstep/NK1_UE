@@ -29,6 +29,5 @@ void UTriggerVolume_QuestCondition::VolumeTrigger(AActor *OverlappedActor, AActo
   if (OtherActor->ActorHasTag(OtherTag))
   {
     Complete();
-    StopCondition();
   }
 }

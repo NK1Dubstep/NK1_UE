@@ -22,30 +22,23 @@ void ULongQuestSystemComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-for (TActorIterator<AQuest> it(GetWorld(), AQuest::StaticClass()); it; ++it)
-{
-    ActiveQuests.AddUnique(*it);
-}
-
 	for (const TSubclassOf<AQuest> &QuestClass : Quests)
 	{
-		AQuest *Quest = GetWorld()->SpawnActor<AQuest>(QuestClass);
-		ActiveQuests.Add(Quest);
+		GetWorld()->SpawnActor<AQuest>(QuestClass);
 	}
-	
 }
 
 void ULongQuestSystemComponent::GetActiveAndStartedQuests(TArray<AQuest *> &OutQuests)
 {
 	for (AQuest *q: ActiveQuests)
 	{
-		if (q->GetQuestStatus() == EQuestStatus::Started)
+		auto status = q->GetQuestStatus();
+		if (status == EQuestStatus::Started || status == EQuestStatus::Completed)
 		{
 			OutQuests.Add(q);
 		}
 	}
 }
-
 
 // Called every frame
 void ULongQuestSystemComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

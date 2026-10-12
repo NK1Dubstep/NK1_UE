@@ -10,7 +10,7 @@ class AQuest;
 class UQuestSettings;
 class UQuestCondition;
 
-UENUM()
+UENUM(BlueprintType)
 enum class EQuestStatus : uint8
 {
 	WaitingForStart,
@@ -19,7 +19,7 @@ enum class EQuestStatus : uint8
 };
 
 // Delegate signature
-DECLARE_MULTICAST_DELEGATE_TwoParams(FOnSomeQuestStatusChanged, AQuest * /* Quest */, EQuestStatus /* NewQuestStatus */)
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnQuestStatusChanged, AQuest*, Quest, EQuestStatus, NewQuestStatus);
 
 UCLASS()
 class NK1_1_API AQuest : public AActor
@@ -43,11 +43,12 @@ public:
 
 	EQuestStatus GetQuestStatus() const noexcept { return QuestStatus; }
 
-	FOnSomeQuestStatusChanged OnSomeQuestStatusChanged;
+	UPROPERTY(BlueprintAssignable)
+  FOnQuestStatusChanged OnQuestStatusChanged;
 
 protected:
 
-	UPROPERTY(EditAnywhere) TObjectPtr<UQuestSettings> QuestSettings;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) TObjectPtr<UQuestSettings> QuestSettings;
 
 	UPROPERTY()
 	TArray<UQuestCondition*> StartConditions;
