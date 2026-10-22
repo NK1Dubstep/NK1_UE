@@ -26,16 +26,16 @@ void AQuest::BeginPlay()
 	}
 	else
 	{
-	  UE_LOG(LogQuest, Error, TEXT("Quest: Quest system component not found"));
+		UE_LOG(LogQuest, Error, TEXT("Quest: Quest system component not found"));
 	}
 
 	if (!QuestSettings)
 	{
-	  UE_LOG(LogQuest, Error, TEXT("Quest: !QuestSettings"));
-	  return;
+		UE_LOG(LogQuest, Error, TEXT("Quest: !QuestSettings"));
+		return;
 	}
 
-	for (const UQuestCondition *ConditionTemplate : QuestSettings->StartConditionsQS)
+	for (const UQuestCondition* ConditionTemplate : QuestSettings->StartConditionsQS)
 	{
 
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
@@ -75,7 +75,7 @@ void AQuest::UpdateStartStatus()
 		cond->OnQuestConditionCompleted.RemoveAll(this);
 	}
 
-	for (const UQuestCondition *ConditionTemplate : QuestSettings->EndConditionsQS)
+	for (const UQuestCondition* ConditionTemplate : QuestSettings->EndConditionsQS)
 	{
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
 		{
@@ -116,8 +116,8 @@ void AQuest::SetQuestStatus(const EQuestStatus NewQuestStatus)
 {
 	if (QuestStatus == NewQuestStatus)
 		return;
-	UE_LOG(LogQuest, Log, TEXT("Quest %p [%s]: changing status %s -> %s"), this, *GetNameSafe(this),
-	  *UEnum::GetValueAsString(QuestStatus), *UEnum::GetValueAsString(NewQuestStatus));
+	UE_LOG(LogQuest, Log, TEXT("Quest %p [%s]: changing status %s -> %s"), this, *GetNameSafe(this), *UEnum::GetValueAsString(QuestStatus),
+		   *UEnum::GetValueAsString(NewQuestStatus));
 	QuestStatus = NewQuestStatus;
 	OnQuestStatusChanged.Broadcast(this, NewQuestStatus);
 }
