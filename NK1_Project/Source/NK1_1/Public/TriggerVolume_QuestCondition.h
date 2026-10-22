@@ -7,24 +7,23 @@
 #include "TriggerVolume_QuestCondition.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class NK1_1_API UTriggerVolume_QuestCondition : public UQuestCondition
 {
 	GENERATED_BODY()
 
-public:
+  public:
 	void StartCondition() override;
 	void StopCondition() override;
-	
+
 	UFUNCTION()
-	void VolumeTrigger(AActor *OverlappedActor, AActor *OtherActor);
+	void VolumeTrigger(AActor* OverlappedActor, AActor* OtherActor);
 
 	UPROPERTY(EditAnywhere)
 	FName OtherTag;
 
 	UPROPERTY(EditAnywhere)
 	bool bStartOnEnter{true};
-
 };

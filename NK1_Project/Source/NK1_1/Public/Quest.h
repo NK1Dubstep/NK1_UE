@@ -25,16 +25,16 @@ UCLASS()
 class NK1_1_API AQuest : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+  public:
 	// Sets default values for this actor's properties
 	AQuest();
 
-protected:
+  protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+  public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -44,10 +44,9 @@ public:
 	EQuestStatus GetQuestStatus() const noexcept { return QuestStatus; }
 
 	UPROPERTY(BlueprintAssignable)
-  FOnQuestStatusChanged OnQuestStatusChanged;
+	FOnQuestStatusChanged OnQuestStatusChanged;
 
-protected:
-
+  protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) TObjectPtr<UQuestSettings> QuestSettings;
 
 	UPROPERTY()
@@ -60,7 +59,4 @@ protected:
 	EQuestStatus QuestStatus{EQuestStatus::WaitingForStart};
 
 	void SetQuestStatus(EQuestStatus NewQuestStatus);
-
-
-
 };

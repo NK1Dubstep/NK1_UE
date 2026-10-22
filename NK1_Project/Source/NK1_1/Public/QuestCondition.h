@@ -9,28 +9,25 @@
 DECLARE_MULTICAST_DELEGATE(FOnQuestConditionCompleted)
 
 /**
- * 
+ *
  */
-UCLASS(Abstract, Blueprintable, BlueprintType)
+UCLASS(Abstract, Blueprintable, BlueprintType, EditInlineNew)
 class NK1_1_API UQuestCondition : public UObject
 {
 	GENERATED_BODY()
 
-
-protected:
+  protected:
 	void Complete();
 
-private:
-	UPROPERTY() bool bCompleted{false};
+  private:
+	UPROPERTY() bool bCompleted { false };
 
-public:
+  public:
 	virtual void StartCondition() PURE_VIRTUAL(StartCondition, );
 	virtual void StopCondition() PURE_VIRTUAL(StopCondition, );
 
 	UFUNCTION(BlueprintCallable)
 	bool IsCompleted() const noexcept { return bCompleted; }
 
-	
 	FOnQuestConditionCompleted OnQuestConditionCompleted;
-
 };

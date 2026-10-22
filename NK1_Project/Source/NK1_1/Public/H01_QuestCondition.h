@@ -7,15 +7,14 @@
 #include "H01_QuestCondition.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class NK1_1_API UH01_QuestCondition : public UQuestCondition
 {
 	GENERATED_BODY()
 
-	public:
+  public:
 	void StartCondition() override;
 	void StopCondition() override;
-	
 };
