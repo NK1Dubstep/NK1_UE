@@ -33,7 +33,7 @@ void ULongQuestSystemComponent::BeginPlay()
 	}
 }
 
-void ULongQuestSystemComponent::GetActiveAndStartedQuests(TArray<AQuest*>& OutQuests)
+void ULongQuestSystemComponent::GetActiveAndStartedOrCompletedQuests(TArray<AQuest*>& OutQuests)
 {
 	for (AQuest* q : ActiveQuests)
 	{

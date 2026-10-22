@@ -25,7 +25,7 @@ class NK1_1_API ULongQuestSystemComponent : public UActorComponent
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UFUNCTION(BlueprintCallable) void GetActiveAndStartedQuests(TArray<AQuest*>& OutQuests);
+	UFUNCTION(BlueprintCallable) void GetActiveAndStartedOrCompletedQuests(TArray<AQuest*>& OutQuests);
 
 	void RegisterQuest(AQuest* NewQuest);
 
