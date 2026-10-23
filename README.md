@@ -5,8 +5,9 @@
 
 ## Description
 
-C++ Code: NK1_Project/Source/NK1_1/Private, NK1_Project/Source/NK1_1/Public\
-Blueprints working directory: NK1_Project/Content/ThirdPerson
+C++ Code: `NK1_Project/Source/NK1_1/Private`, `NK1_Project/Source/NK1_1/Public`\
+Blueprints working directory: `NK1_Project/Content/ThirdPerson`
 
 ![Quest list UI showcase](images/quest_system_01.png)
+
 ![Quest system log output](images/quest_system_02.png)
