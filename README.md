@@ -1,6 +1,6 @@
 # SPb HSE Unreal Engine Course Practice
 
-**Author:** Nikita Koptelov
+**Author:** Nikita Koptelov\
 **Date:** 09-10.2026
 
 ## Description
